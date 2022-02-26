@@ -16,6 +16,7 @@
 		55730F4127CA0D7C006174A6 /* MoviesDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55730F4027CA0D7C006174A6 /* MoviesDBTests.swift */; };
 		55730F4B27CA0D7C006174A6 /* MoviesDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55730F4A27CA0D7C006174A6 /* MoviesDBUITests.swift */; };
 		55730F4D27CA0D7C006174A6 /* MoviesDBUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55730F4C27CA0D7C006174A6 /* MoviesDBUITestsLaunchTests.swift */; };
+		55E64C3727CA80F2004D59C6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C3627CA80F2004D59C6 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		55730F4627CA0D7C006174A6 /* MoviesDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55730F4A27CA0D7C006174A6 /* MoviesDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDBUITests.swift; sourceTree = "<group>"; };
 		55730F4C27CA0D7C006174A6 /* MoviesDBUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesDBUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		55E64C3627CA80F2004D59C6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			children = (
 				55730F2A27CA0D7B006174A6 /* MoviesDBApp.swift */,
 				55730F2C27CA0D7B006174A6 /* ContentView.swift */,
+				55E64C3627CA80F2004D59C6 /* API.swift */,
 				55730F2E27CA0D7C006174A6 /* Assets.xcassets */,
 				55730F3327CA0D7C006174A6 /* Persistence.swift */,
 				55730F3527CA0D7C006174A6 /* MoviesDB.xcdatamodeld */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E64C3727CA80F2004D59C6 /* API.swift in Sources */,
 				55730F3427CA0D7C006174A6 /* Persistence.swift in Sources */,
 				55730F2D27CA0D7B006174A6 /* ContentView.swift in Sources */,
 				55730F3727CA0D7C006174A6 /* MoviesDB.xcdatamodeld in Sources */,
