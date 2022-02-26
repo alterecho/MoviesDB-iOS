@@ -28,5 +28,4 @@ struct API {
         }
         return url
     }
-
 }
