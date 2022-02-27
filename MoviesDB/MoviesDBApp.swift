@@ -13,7 +13,7 @@ struct MoviesDBApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MoviesListView(vm: MoviesListViewModel())
+            MoviesListView(viewModel: MoviesListViewModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

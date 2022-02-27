@@ -17,31 +17,17 @@ protocol MoviesListViewModelProtocol: ObservableObject {
 
 class MoviesListViewModel: MoviesListViewModelProtocol {
     @Published var searchBarPlaceholder: String
-    
     @Published var searchText: String = ""
-//        Binding {
-//            self?.searchText.wrappedValue ?? ""
-//        } set: {
-//            print("set \($0)")
-//            self?.service.search($0) { result in
-//                switch result {
-//                case .success(let movies):
-//                    break
-//                case .failure(let error):
-//                    break
-//                }
-//            }
-//        }
-//    }()
-    let service = MoviesListViewService()
-        
     @Published var moviesToDisplay: [Movie]?
+    
+    private let service = MoviesListViewService()
+    private var cancellables = Set<AnyCancellable>()
     
     init() {
         searchBarPlaceholder = "searchBarPlaceholder"
         moviesToDisplay = []
         
-        $searchText.debounce(for: .second(2), scheduler: DispatchQueue.main).sink { [weak self] searchString in
+        $searchText.debounce(for: .seconds(2), scheduler: RunLoop.main).sink { [weak self] searchString in
             self?.service.search(searchString) { result in
                 switch result {
                 case .success(let movies):
@@ -50,6 +36,6 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
                     break
                 }
             }
-        }
+        }.store(in: &cancellables)
     }
 }

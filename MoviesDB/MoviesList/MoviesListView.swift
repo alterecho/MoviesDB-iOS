@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
-    @State var vm: ViewModel?
+    @State var viewModel: ViewModel
     var body: some View {
         NavigationView {
-            if let searchText = vm?.searchText {
-                TextField(vm?.searchBarPlaceholder ?? "", text: searchText)
-            }
+            TextField(viewModel.searchBarPlaceholder, text: $viewModel.searchText)
         }
     }
 }
 
 struct MoviesListView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviesListView(vm: MoviesListViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        MoviesListView(viewModel: MoviesListViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 
