@@ -9,10 +9,27 @@ import Combine
 import Foundation
 
 class MoviesListViewService {
-    func search(_ searchString: String) -> AnyPublisher<[Movie], Error> {
+    var searchCancellable: AnyCancellable?
+    
+    func search(_ searchString: String, completionHandler: @escaping (Result<[Movie], Error>) -> Void) {
+        guard searchCancellable == nil else {
+            return
+        }
+        var movies = [Movie]()
         let request = URLRequest(url: API.fetchMoviesURL(searchText: searchString))
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .map { print($0.data.count); return $0.data }.decode(type: SearchResponse.self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
+        searchCancellable = URLSession.shared.dataTaskPublisher(for: request)
+            .map { print($0.data.count); return $0.data }.decode(type: SearchResponse.self, decoder: JSONDecoder()).sink { [weak self] completion in
+                self?.searchCancellable = nil
+                switch completion {
+                case .finished:
+                    completionHandler(.success(movies))
+                case .failure(let error):
+                    completionHandler(.failure(error))
+                }
+            } receiveValue: { response in
+                movies = response.search
+            }
+
+
     }
 }

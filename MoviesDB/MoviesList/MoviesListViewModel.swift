@@ -23,10 +23,14 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
             self?.searchText.wrappedValue ?? ""
         } set: {
             print("set \($0)")
-            self?.service.search("Marvel").sink(receiveCompletion: { completion in
-            }, receiveValue: { movies in
-                
-            })
+            self?.service.search($0) { result in
+                switch result {
+                case .success(let movies):
+                    break
+                case .failure(let error):
+                    break
+                }
+            }
         }
     }()
     
