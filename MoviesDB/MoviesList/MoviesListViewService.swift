@@ -29,7 +29,5 @@ class MoviesListViewService {
             } receiveValue: { response in
                 movies = response.search
             }
-
-
     }
 }
