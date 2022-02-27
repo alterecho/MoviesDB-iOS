@@ -12,7 +12,7 @@ class MoviesListViewService {
     func search(_ searchString: String) -> AnyPublisher<[Movie], Error> {
         let request = URLRequest(url: API.fetchMoviesURL(searchText: searchString))
         return URLSession.shared.dataTaskPublisher(for: request)
-            .map { print($0.data.count); return $0.data }.decode(type: [Movie].self, decoder: JSONDecoder())
+            .map { print($0.data.count); return $0.data }.decode(type: SearchResponse.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }
