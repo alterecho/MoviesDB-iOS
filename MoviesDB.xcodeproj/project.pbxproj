@@ -62,6 +62,7 @@
 		55E64C4127CA8858004D59C6 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		55E64C4327CA8925004D59C6 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		55E64C4627CB09E4004D59C6 /* MoviesListViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewService.swift; sourceTree = "<group>"; };
+		55E64C5127CBB45F004D59C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +113,7 @@
 		55730F2927CA0D7B006174A6 /* MoviesDB */ = {
 			isa = PBXGroup;
 			children = (
+				55E64C5127CBB45F004D59C6 /* Info.plist */,
 				55730F2A27CA0D7B006174A6 /* MoviesDBApp.swift */,
 				55730F2C27CA0D7B006174A6 /* ContentView.swift */,
 				55E64C3627CA80F2004D59C6 /* API.swift */,
@@ -474,6 +476,7 @@
 				DEVELOPMENT_TEAM = 2KM52TUWUW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoviesDB/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -503,6 +506,7 @@
 				DEVELOPMENT_TEAM = 2KM52TUWUW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MoviesDB/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
