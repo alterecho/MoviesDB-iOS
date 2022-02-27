@@ -8,20 +8,12 @@
 import Foundation
 
 struct Movie: Codable {
-    let title: String
-    let year: UInt
-    let imdbID: String
+    let title: String?
+    let year: String?
+    let imdbID: String?
     let type: Type?
     let poster: URL?
-    
-    init() {
-        title = "title"
-        year = 1023
-        imdbID = "imdbID"
-        type = .movie
-        poster = nil
-    }
-    
+        
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
