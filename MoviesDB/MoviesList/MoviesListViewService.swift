@@ -18,7 +18,9 @@ class MoviesListViewService {
         var movies = [Movie]()
         let request = URLRequest(url: API.fetchMoviesURL(searchText: searchString))
         searchCancellable = URLSession.shared.dataTaskPublisher(for: request)
-            .map { print($0.data.count); return $0.data }.decode(type: SearchResponse.self, decoder: JSONDecoder()).sink { [weak self] completion in
+            .map { $0.data }
+            .decode(type: SearchResponse.self, decoder: JSONDecoder())
+            .receive(on: RunLoop.main).sink { [weak self] completion in
                 self?.searchCancellable = nil
                 switch completion {
                 case .finished:
