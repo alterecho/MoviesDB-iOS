@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct MovieGridCellView: View {
-    @State var movie: Movie
+    @StateObject var movie: Movie
+    let size: CGSize
+    
     var body: some View {
-        Color.red.frame(width: 100.0, height: 100.0, alignment: .center)
+        if let posterImage = movie.posterImage {
+            Image(uiImage: posterImage).resizable().frame(width: size.width, height: size.height, alignment: .center).scaledToFit()
+        } else {
+            ProgressView().background(Color.red)
+        }
+    }
+    
+    init(movie: Movie, size: CGSize) {
+        _movie = StateObject(wrappedValue: movie)
+        self.size = size
     }
 }

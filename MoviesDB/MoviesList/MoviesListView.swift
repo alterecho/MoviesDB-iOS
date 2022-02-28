@@ -14,13 +14,13 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
             VStack(alignment: .leading, spacing: 2.0) {
                 TextField(viewModel.searchBarPlaceholder, text: $viewModel.searchText)
                 let screenSize = UIScreen.main.bounds
-                let cellWidth = screenSize.width / 3.0 - 2.0
-                let gridItem = GridItem(.fixed(cellWidth), spacing: 0.0)
+                let cellSize = CGSize(width: screenSize.width / 3.0 - 2.0, height: screenSize.height / 3.0)
+                let gridItem = GridItem(.fixed(cellSize.width), spacing: 0.0)
                 ScrollView {
                     LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders]) {
                         Section(header: Text("Results").frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)) {
                             ForEach(viewModel.moviesToDisplay.indices, id: \.self) { index in
-                                MovieGridCellView(movie: viewModel.moviesToDisplay[index])
+                                MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
                             }
                         }
                     }

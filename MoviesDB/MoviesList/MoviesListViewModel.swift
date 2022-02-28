@@ -29,14 +29,21 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
         moviesToDisplay = []
         
         $searchText.debounce(for: .seconds(2), scheduler: RunLoop.main).sink { [weak self] searchString in
-            self?.service.search(searchString) { result in
-                switch result {
-                case .success(let movies):
-                    self?.moviesToDisplay = movies
-                case .failure(let error):
-                    break
-                }
-            }
+            self?.performSearch(searchString: searchString)
         }.store(in: &cancellables)
+        
     }
+    
+    
+    private func performSearch(searchString: String) {
+        service.search(searchString) { [weak self] result in
+            switch result {
+            case .success(let movies):
+                self?.moviesToDisplay = movies
+            case .failure(let error):
+                break
+            }
+        }
+    }
+    
 }

@@ -25,6 +25,7 @@
 		55E64C5027CBB3C6004D59C6 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C4F27CBB3C6004D59C6 /* SearchResponse.swift */; };
 		55E64C5327CBC955004D59C6 /* MovieGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */; };
 		55E64C5727CC5D60004D59C6 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5627CC5D60004D59C6 /* MovieResponse.swift */; };
+		55E64C5927CC9EAE004D59C6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5827CC9EAE004D59C6 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		55E64C5127CBB45F004D59C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridCellView.swift; sourceTree = "<group>"; };
 		55E64C5627CC5D60004D59C6 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
+		55E64C5827CC9EAE004D59C6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				55730F2A27CA0D7B006174A6 /* MoviesDBApp.swift */,
 				55E64C3627CA80F2004D59C6 /* API.swift */,
 				55E64C3F27CA87DC004D59C6 /* Protocols.swift */,
+				55E64C5827CC9EAE004D59C6 /* Utilities.swift */,
 				55E64C4527CA8C54004D59C6 /* Model */,
 				55E64C3C27CA8751004D59C6 /* MoviesList */,
 				55730F2E27CA0D7C006174A6 /* Assets.xcassets */,
@@ -318,6 +321,7 @@
 			files = (
 				55E64C4227CA8858004D59C6 /* Movie.swift in Sources */,
 				55E64C3727CA80F2004D59C6 /* API.swift in Sources */,
+				55E64C5927CC9EAE004D59C6 /* Utilities.swift in Sources */,
 				55730F3427CA0D7C006174A6 /* Persistence.swift in Sources */,
 				55730F3727CA0D7C006174A6 /* MoviesDB.xcdatamodeld in Sources */,
 				55E64C4727CB09E5004D59C6 /* MoviesListViewService.swift in Sources */,
