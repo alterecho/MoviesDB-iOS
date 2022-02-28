@@ -17,7 +17,7 @@ struct MovieResponse: Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"
-        case imdbID = "ImdbID"
+        case imdbID = "imdbID"
         case type = "Type"
         case poster = "Poster"
     }

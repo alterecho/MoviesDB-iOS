@@ -25,6 +25,8 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                                     NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(imdbID: imdbID))) {
                                         MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
                                     }
+                                } else {
+                                    MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
                                 }
                             }
                         }
