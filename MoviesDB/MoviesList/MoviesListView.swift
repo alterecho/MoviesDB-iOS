@@ -34,7 +34,7 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                 }
             }
             
-        }
+        }.navigationTitle(viewModel.pageTitle)
     }
 }
 
