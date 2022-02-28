@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct MovieDetailsView: View {
+struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
+    let viewModel: ViewModel
+    
     var body: some View {
         return NavigationView {
-            
-        }
+            Color.red
+        }.navigationTitle("Details")
     }
 }

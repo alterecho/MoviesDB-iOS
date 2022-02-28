@@ -20,7 +20,12 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                     LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders]) {
                         Section(header: Text("Results").frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)) {
                             ForEach(viewModel.moviesToDisplay.indices, id: \.self) { index in
-                                MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
+                                let movie = viewModel.moviesToDisplay[index]
+                                if let imdbID = movie.imdbID {
+                                    NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(imdbID: imdbID))) {
+                                        MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
+                                    }
+                                }
                             }
                         }
                     }

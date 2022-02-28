@@ -20,6 +20,7 @@ class MovieDetails {
     let director: String?
     let writer: String?
     let actors: String?
+    let posterURL: URL?
     
     init(response: MovieDetailsResponse) {
         self.title = response.Title
@@ -34,5 +35,6 @@ class MovieDetails {
         self.director = response.Director
         self.writer = response.Writer
         self.actors = response.Actors
+        self.posterURL = response.Poster
     }
 }

@@ -10,7 +10,7 @@ import Combine
 
 class MovieDetailsViewService {
     private var movieDetailsCancellable: AnyCancellable?
-    func getMovieDetails(id: String, completionHandler: @escaping (Result<MovieDetails, Error>) -> Void) {
+    func fetchMovieDetails(id: String, completionHandler: @escaping (Result<MovieDetails, Error>) -> Void) {
         if movieDetailsCancellable != nil {
             return
         }

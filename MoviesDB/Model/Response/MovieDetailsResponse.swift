@@ -31,6 +31,7 @@ struct MovieDetailsResponse: Decodable {
     let Language: String?
     let Country: String?
     let Awards: String?
+    let Poster: URL?
     let Ratings: [RatingsResponse]?
     let Metascore: String?
     let imdbRating: String?

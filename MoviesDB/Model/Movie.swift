@@ -42,7 +42,7 @@ class Movie: ObservableObject {
                 switch result {
                 case .success(let image):
                     self?.posterImage = image
-                case .failure(let error):
+                case .failure(_):
                     break
                 }
             }
