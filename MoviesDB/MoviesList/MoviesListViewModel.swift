@@ -40,7 +40,7 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
             switch result {
             case .success(let movies):
                 self?.moviesToDisplay = movies
-            case .failure(let error):
+            case .failure(_):
                 break
             }
         }

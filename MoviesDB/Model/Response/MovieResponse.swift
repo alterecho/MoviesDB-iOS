@@ -21,5 +21,4 @@ struct MovieResponse: Codable, Hashable {
         case type = "Type"
         case poster = "Poster"
     }
-    
 }
