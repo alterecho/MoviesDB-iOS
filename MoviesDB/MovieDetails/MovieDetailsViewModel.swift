@@ -21,6 +21,8 @@ protocol MovieDetailsViewModelProtocol: ObservableObject {
     var details: MovieDetails? { get }
     
     var poster: UIImage? { get }
+    
+    func onAppear()
 }
 
 class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
@@ -43,6 +45,9 @@ class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
     
     init(imdbID: String) {
         self.imdbID = imdbID
+    }
+    
+    func onAppear() {
         service.fetchMovieDetails(id: imdbID) { [weak self] result in
             switch result {
             case .success(let details):

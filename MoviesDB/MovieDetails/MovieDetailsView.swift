@@ -19,7 +19,9 @@ struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
                 getMetricsView()
                 getCreditsView()
             }
-        }.navigationTitle(viewModel.pageTitle)
+        }.navigationTitle(viewModel.pageTitle).onAppear {
+            viewModel.onAppear()
+        }
     }
     
     func getPosterTitleView() -> some View {
