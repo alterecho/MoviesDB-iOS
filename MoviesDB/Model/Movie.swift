@@ -12,14 +12,13 @@ struct Movie: Codable, Hashable {
     let year: String?
     let imdbID: String?
     let type: Type?
-    let poster: URL?
-        
-    enum CodingKeys: String, CodingKey {
-        case title = "Title"
-        case year = "Year"
-        case imdbID = "ImdbID"
-        case type = "Type"
-        case poster = "Poster"
-    }
+    let posterURL: URL?
     
+    init(response: MovieResponse) {
+        self.title = response.title
+        self.year = response.year
+        self.imdbID = response.imdbID
+        self.type = response.type
+        self.posterURL = response.poster
+    }
 }

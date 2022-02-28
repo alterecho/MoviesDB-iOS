@@ -24,6 +24,7 @@
 		55E64C4727CB09E5004D59C6 /* MoviesListViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C4627CB09E4004D59C6 /* MoviesListViewService.swift */; };
 		55E64C5027CBB3C6004D59C6 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C4F27CBB3C6004D59C6 /* SearchResponse.swift */; };
 		55E64C5327CBC955004D59C6 /* MovieGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */; };
+		55E64C5727CC5D60004D59C6 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5627CC5D60004D59C6 /* MovieResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		55E64C4F27CBB3C6004D59C6 /* SearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		55E64C5127CBB45F004D59C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridCellView.swift; sourceTree = "<group>"; };
+		55E64C5627CC5D60004D59C6 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				55E64C4F27CBB3C6004D59C6 /* SearchResponse.swift */,
+				55E64C5627CC5D60004D59C6 /* MovieResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				55E64C4427CA8925004D59C6 /* Type.swift in Sources */,
 				55E64C3927CA8735004D59C6 /* MoviesListView.swift in Sources */,
 				55E64C5027CBB3C6004D59C6 /* SearchResponse.swift in Sources */,
+				55E64C5727CC5D60004D59C6 /* MovieResponse.swift in Sources */,
 				55730F2B27CA0D7B006174A6 /* MoviesDBApp.swift in Sources */,
 				55E64C5327CBC955004D59C6 /* MovieGridCellView.swift in Sources */,
 				55E64C3E27CA8774004D59C6 /* MoviesListViewModel.swift in Sources */,

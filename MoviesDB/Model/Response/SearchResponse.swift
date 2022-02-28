@@ -9,7 +9,7 @@ import Foundation
 
 struct SearchResponse: Decodable {
     let response: String?
-    let search: [Movie]?
+    let search: [MovieResponse]?
     
     enum CodingKeys: String, CodingKey {
         case search = "Search"

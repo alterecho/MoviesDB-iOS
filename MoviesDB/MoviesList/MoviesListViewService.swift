@@ -29,7 +29,9 @@ class MoviesListViewService {
                     completionHandler(.failure(error))
                 }
             } receiveValue: { response in
-                movies = response.search ?? []
+                movies = response.search?.map { response in
+                    return Movie(response: response)
+                } ?? []
             }
     }
 }
