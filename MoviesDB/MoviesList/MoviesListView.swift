@@ -32,9 +32,15 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                         }
                     }
                 }
+                
             }
             
-        }.navigationTitle(viewModel.pageTitle)
+        }.navigationTitle(viewModel.pageTitle).alert(isPresented: $viewModel.alert.isShowing) {
+            Alert(title: Text(viewModel.alert.title ?? ""), message: Text(viewModel.alert.message ?? ""),
+                  dismissButton: .default(Text(viewModel.alert.buttonTitle ?? "")) {
+                
+            })
+        }
     }
 }
 

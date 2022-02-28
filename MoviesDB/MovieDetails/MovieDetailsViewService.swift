@@ -14,14 +14,16 @@ class MovieDetailsViewService {
         var movieDetails: MovieDetails?
         let url = API.fetchMoviesDetails(id: id)
         movieDetailsCancellable = URLSession.shared.dataTaskPublisher(for: url).map { $0.data }
-        .decode(type: MovieDetailsResponse.self, decoder: JSONDecoder())    
+        .decode(type: MovieDetailsResponse.self, decoder: JSONDecoder())
+        .receive(on: RunLoop.main)
         .sink { completion in
             switch completion {
             case .finished:
                 if let movieDetails = movieDetails {
                     completionHandler(.success(movieDetails))
                 }
-            case .failure(_):
+            case .failure(let error):
+                completionHandler(.failure(error))
                 break
             }
         } receiveValue: { response in

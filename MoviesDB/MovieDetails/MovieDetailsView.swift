@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
-    let viewModel: ViewModel
-    
+    @StateObject var viewModel: ViewModel
     var body: some View {
         return NavigationView {
             VStack {
@@ -21,9 +20,14 @@ struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
             }
         }.navigationTitle(viewModel.pageTitle).onAppear {
             viewModel.onAppear()
+        }.alert(isPresented: $viewModel.alert.isShowing) {
+            Alert(title: Text(viewModel.alert.title ?? ""), message: Text(viewModel.alert.message ?? ""),
+                  dismissButton: .default(Text(viewModel.alert.buttonTitle ?? "")) {
+                
+            })
         }
     }
-    
+ 
     func getPosterTitleView() -> some View {
         ZStack {
             if let image = viewModel.poster {

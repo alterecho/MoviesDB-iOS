@@ -13,14 +13,16 @@ protocol MoviesListViewModelProtocol: ObservableObject {
     var searchBarPlaceholder: String { get }
     var searchText: String { get set }
     var moviesToDisplay: [Movie] { get set }
-    
+    var alert: AlertModel { get set }
 }
 
 class MoviesListViewModel: MoviesListViewModelProtocol {
     var pageTitle = "Film list"
     var searchBarPlaceholder: String
+    
     @Published var searchText: String
     @Published var moviesToDisplay: [Movie]
+    @Published var alert = AlertModel()
     
     private let service = MoviesListViewService()
     private var cancellables = Set<AnyCancellable>()

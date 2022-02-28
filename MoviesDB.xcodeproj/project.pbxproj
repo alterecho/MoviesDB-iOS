@@ -31,6 +31,7 @@
 		55E64C6027CCD82E004D59C6 /* MovieDetailsViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5F27CCD82E004D59C6 /* MovieDetailsViewService.swift */; };
 		55E64C6327CCDF11004D59C6 /* MovieDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6227CCDF11004D59C6 /* MovieDetailsResponse.swift */; };
 		55E64C6527CCF691004D59C6 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6427CCF691004D59C6 /* MovieDetails.swift */; };
+		55E64C6727CD41ED004D59C6 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6627CD41EC004D59C6 /* AlertModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		55E64C5F27CCD82E004D59C6 /* MovieDetailsViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewService.swift; sourceTree = "<group>"; };
 		55E64C6227CCDF11004D59C6 /* MovieDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsResponse.swift; sourceTree = "<group>"; };
 		55E64C6427CCF691004D59C6 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
+		55E64C6627CD41EC004D59C6 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				55E64C4327CA8925004D59C6 /* Type.swift */,
 				55E64C4127CA8858004D59C6 /* Movie.swift */,
 				55E64C6427CCF691004D59C6 /* MovieDetails.swift */,
+				55E64C6627CD41EC004D59C6 /* AlertModel.swift */,
 				55E64C4E27CBB3C6004D59C6 /* Response */,
 			);
 			path = Model;
@@ -358,6 +361,7 @@
 				55E64C4727CB09E5004D59C6 /* MoviesListViewService.swift in Sources */,
 				55E64C6027CCD82E004D59C6 /* MovieDetailsViewService.swift in Sources */,
 				55E64C4427CA8925004D59C6 /* Type.swift in Sources */,
+				55E64C6727CD41ED004D59C6 /* AlertModel.swift in Sources */,
 				55E64C3927CA8735004D59C6 /* MoviesListView.swift in Sources */,
 				55E64C5E27CCD822004D59C6 /* MovieDetailsViewModel.swift in Sources */,
 				55E64C5027CBB3C6004D59C6 /* SearchResponse.swift in Sources */,

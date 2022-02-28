@@ -21,6 +21,7 @@ protocol MovieDetailsViewModelProtocol: ObservableObject {
     var details: MovieDetails? { get }
     
     var poster: UIImage? { get }
+    var alert: AlertModel { get set }
     
     func onAppear()
 }
@@ -37,6 +38,8 @@ class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
     var directorTitle = "Director"
     var writerTitle = "Writer"
     var actorsTitle = "Actors"
+    
+    @Published var alert = AlertModel()
     
     @Published private(set) var details: MovieDetails?
     @Published private(set) var poster: UIImage?
@@ -57,14 +60,13 @@ class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
                         switch result {
                         case .success(let image):
                             self?.poster = image
-                            break
-                        case .failure(_):
-                            break
+                        case .failure(let error):
+                            self?.alert = AlertModel(error: error)
                         }
                     }
                 }
-            case .failure(_):
-                break
+            case .failure(let error):
+                self?.alert = AlertModel(error: error)
             }
         }
     }
