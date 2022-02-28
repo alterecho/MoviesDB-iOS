@@ -26,6 +26,9 @@
 		55E64C5327CBC955004D59C6 /* MovieGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */; };
 		55E64C5727CC5D60004D59C6 /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5627CC5D60004D59C6 /* MovieResponse.swift */; };
 		55E64C5927CC9EAE004D59C6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5827CC9EAE004D59C6 /* Utilities.swift */; };
+		55E64C5C27CCD7F6004D59C6 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5B27CCD7F6004D59C6 /* MovieDetailsView.swift */; };
+		55E64C5E27CCD822004D59C6 /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5D27CCD822004D59C6 /* MovieDetailsViewModel.swift */; };
+		55E64C6027CCD82E004D59C6 /* MovieDetailsViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C5F27CCD82E004D59C6 /* MovieDetailsViewService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieGridCellView.swift; sourceTree = "<group>"; };
 		55E64C5627CC5D60004D59C6 /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		55E64C5827CC9EAE004D59C6 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		55E64C5B27CCD7F6004D59C6 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
+		55E64C5D27CCD822004D59C6 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		55E64C5F27CCD82E004D59C6 /* MovieDetailsViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +131,9 @@
 				55E64C3F27CA87DC004D59C6 /* Protocols.swift */,
 				55E64C5827CC9EAE004D59C6 /* Utilities.swift */,
 				55E64C4527CA8C54004D59C6 /* Model */,
+				55E64C6127CCD83B004D59C6 /* CommonViews */,
 				55E64C3C27CA8751004D59C6 /* MoviesList */,
+				55E64C5A27CCD7D0004D59C6 /* MovieDetails */,
 				55730F2E27CA0D7C006174A6 /* Assets.xcassets */,
 				55730F3327CA0D7C006174A6 /* Persistence.swift */,
 				55730F3527CA0D7C006174A6 /* MoviesDB.xcdatamodeld */,
@@ -165,7 +173,6 @@
 				55E64C3827CA8735004D59C6 /* MoviesListView.swift */,
 				55E64C3D27CA8774004D59C6 /* MoviesListViewModel.swift */,
 				55E64C4627CB09E4004D59C6 /* MoviesListViewService.swift */,
-				55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */,
 			);
 			path = MoviesList;
 			sourceTree = "<group>";
@@ -187,6 +194,24 @@
 				55E64C5627CC5D60004D59C6 /* MovieResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		55E64C5A27CCD7D0004D59C6 /* MovieDetails */ = {
+			isa = PBXGroup;
+			children = (
+				55E64C5B27CCD7F6004D59C6 /* MovieDetailsView.swift */,
+				55E64C5D27CCD822004D59C6 /* MovieDetailsViewModel.swift */,
+				55E64C5F27CCD82E004D59C6 /* MovieDetailsViewService.swift */,
+			);
+			path = MovieDetails;
+			sourceTree = "<group>";
+		};
+		55E64C6127CCD83B004D59C6 /* CommonViews */ = {
+			isa = PBXGroup;
+			children = (
+				55E64C5227CBC955004D59C6 /* MovieGridCellView.swift */,
+			);
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,9 +350,12 @@
 				55730F3427CA0D7C006174A6 /* Persistence.swift in Sources */,
 				55730F3727CA0D7C006174A6 /* MoviesDB.xcdatamodeld in Sources */,
 				55E64C4727CB09E5004D59C6 /* MoviesListViewService.swift in Sources */,
+				55E64C6027CCD82E004D59C6 /* MovieDetailsViewService.swift in Sources */,
 				55E64C4427CA8925004D59C6 /* Type.swift in Sources */,
 				55E64C3927CA8735004D59C6 /* MoviesListView.swift in Sources */,
+				55E64C5E27CCD822004D59C6 /* MovieDetailsViewModel.swift in Sources */,
 				55E64C5027CBB3C6004D59C6 /* SearchResponse.swift in Sources */,
+				55E64C5C27CCD7F6004D59C6 /* MovieDetailsView.swift in Sources */,
 				55E64C5727CC5D60004D59C6 /* MovieResponse.swift in Sources */,
 				55730F2B27CA0D7B006174A6 /* MoviesDBApp.swift in Sources */,
 				55E64C5327CBC955004D59C6 /* MovieGridCellView.swift in Sources */,
