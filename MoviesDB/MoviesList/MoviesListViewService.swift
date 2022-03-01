@@ -11,12 +11,12 @@ import Foundation
 class MoviesListViewService {
     var searchCancellable: AnyCancellable?
     
-    func search(_ searchString: String, completionHandler: @escaping (Result<[Movie], Error>) -> Void) {
+    func search(_ searchString: String, page: Int, completionHandler: @escaping (Result<SearchResponse, Error>) -> Void) {
         guard searchCancellable == nil else {
             return
         }
-        var movies = [Movie]()
-        let request = URLRequest(url: API.fetchMoviesURL(searchText: searchString))
+        let request = URLRequest(url: API.fetchMoviesURL(searchText: searchString, page: page))
+        var searchResponse: SearchResponse?
         searchCancellable = URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .decode(type: SearchResponse.self, decoder: JSONDecoder())
@@ -24,14 +24,16 @@ class MoviesListViewService {
                 self?.searchCancellable = nil
                 switch completion {
                 case .finished:
-                    completionHandler(.success(movies))
+                    if let response = searchResponse {
+                        completionHandler(.success(response))
+                    } else {
+                        completionHandler(.failure(NSError()))
+                    }
                 case .failure(let error):
                     completionHandler(.failure(error))
                 }
             } receiveValue: { response in
-                movies = response.search?.map { response in
-                    return Movie(response: response)
-                } ?? []
+                searchResponse = response
             }
     }
 }

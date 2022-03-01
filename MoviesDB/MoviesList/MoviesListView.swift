@@ -12,22 +12,29 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 2.0) {
-                TextField(viewModel.searchBarPlaceholder, text: $viewModel.searchText)
+                TextField(viewModel.searchBarPlaceholder, text: $viewModel.searchText).padding()
                 let screenSize = UIScreen.main.bounds
-                let cellSize = CGSize(width: screenSize.width / 3.0 - 2.0, height: screenSize.height / 3.0)
-                let gridItem = GridItem(.fixed(cellSize.width), spacing: 0.0)
+                let numberOfItemsPerRow = 3
+                let spacing = 5.0
+                let cellSize = CGSize(width: screenSize.width / CGFloat(numberOfItemsPerRow),
+                                      height: screenSize.height / CGFloat(numberOfItemsPerRow))
+                let gridItem = GridItem(.fixed(cellSize.width), spacing: spacing)
                 ZStack {
                     ScrollView {
-                        LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders]) {
+                        LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: spacing, pinnedViews: [.sectionHeaders]) {
                             Section(header: Text("Results").frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)) {
                                 ForEach(viewModel.moviesToDisplay.indices, id: \.self) { index in
                                     let movie = viewModel.moviesToDisplay[index]
                                     if let imdbID = movie.imdbID {
                                         NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(imdbID: imdbID))) {
-                                            MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
+                                            MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize).onAppear {
+                                                viewModel.movieCellDidAppear(index: Int(index.magnitude))
+                                            }
                                         }
                                     } else {
-                                        MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
+                                        MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize).onAppear {
+                                            viewModel.movieCellDidAppear(index: Int(index.magnitude))
+                                        }
                                     }
                                 }
                             }
@@ -40,9 +47,7 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
             }.navigationTitle(viewModel.pageTitle)
         }.alert(isPresented: $viewModel.alert.isShowing) {
             Alert(title: Text(viewModel.alert.title ?? ""), message: Text(viewModel.alert.message ?? ""),
-                  dismissButton: .default(Text(viewModel.alert.buttonTitle ?? "")) {
-                
-            })
+                  dismissButton: .default(Text(viewModel.alert.buttonTitle ?? "")))
         }
     }
 }

@@ -15,9 +15,14 @@ protocol MoviesListViewModelProtocol: ObservableObject {
     var moviesToDisplay: [Movie] { get set }
     var alert: AlertModel { get set }
     var isLoading: Bool { get }
+    
+    func movieCellDidAppear(index: Int)
 }
 
 class MoviesListViewModel: MoviesListViewModelProtocol {
+    
+    private static let pageStartIndex = 1
+    
     var pageTitle = "Film list"
     var searchBarPlaceholder: String
     
@@ -29,24 +34,47 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
     private let service = MoviesListViewService()
     private var cancellables = Set<AnyCancellable>()
     
+    private var totalResults: Int?
+    private var currentPage = MoviesListViewModel.pageStartIndex
+    private var currentSearchString: String?
+    private var currentPageToFetch: Int?
+
     init() {
-        searchBarPlaceholder = "searchBarPlaceholder"
+        searchBarPlaceholder = "Type movie, series, episode here"
         searchText = ""
         moviesToDisplay = []
         
         $searchText.debounce(for: .seconds(2), scheduler: RunLoop.main).sink { [weak self] searchString in
-            self?.performSearch(searchString: searchString)
+            self?.performSearch(searchString: searchString, page: MoviesListViewModel.pageStartIndex)
         }.store(in: &cancellables)
-        
     }
     
-    private func performSearch(searchString: String) {
+    private func performSearch(searchString: String, page: Int) {
+        if searchString == currentSearchString &&  page == currentPageToFetch {
+            return
+        } else if searchString != currentSearchString {
+            currentSearchString = searchString
+        }
+        
+        
+        currentPageToFetch = page
+        
         isLoading = true
-        service.search("marvel") { [weak self] result in
+        service.search(searchString.isEmpty ? "marvel" : searchString, page: page) { [weak self] result in
             self?.isLoading = false
             switch result {
-            case .success(let movies):
-                self?.moviesToDisplay = movies
+            case .success(let response):
+                let movies = response.search?.map { response in
+                    return Movie(response: response)
+                } ?? []
+                if searchString == self?.currentSearchString {
+                    self?.moviesToDisplay.append(contentsOf: movies)
+                } else {
+                    self?.moviesToDisplay = movies
+                }
+                self?.currentPage += 1
+                self?.currentPageToFetch = nil
+                self?.totalResults = Int(response.totalResults ?? "")
             case .failure(let error):
                 self?.alert = AlertModel(error: error)
                 break
@@ -54,4 +82,23 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
         }
     }
     
+    func movieCellDidAppear(index: Int) {
+        guard let totalResults = totalResults else {
+            return
+        }
+
+        if index == (totalResults - 2) {
+            return
+        }
+        loadNextPage()
+    }
+    
+    private func loadNextPage() {
+        guard let currentSearchString = currentSearchString else {
+            return
+        }
+
+        performSearch(searchString: currentSearchString, page: currentPage + 1)
+        
+    }
 }

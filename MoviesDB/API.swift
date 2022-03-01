@@ -15,8 +15,8 @@ struct API {
     private static let defaultSearchText = "Marvel"
     private static let defaultType = "movie"
     
-    static func fetchMoviesURL(searchText s: String = defaultSearchText) -> URL {
-        guard let url = URL(string: "\(baseURL)/?apikey=\(apiKey)&s=\(s)&type=\(defaultType)") else {
+    static func fetchMoviesURL(searchText s: String = defaultSearchText, page: Int) -> URL {
+        guard let url = URL(string: "\(baseURL)/?apikey=\(apiKey)&s=\(s)&type=\(defaultType)&page=\(page)") else {
             fatalError("invalid MoviesURL")
         }
         return url
