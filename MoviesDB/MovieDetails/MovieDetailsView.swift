@@ -9,15 +9,23 @@ import SwiftUI
 
 struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
+    
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
-        return NavigationView {
-            VStack {
-                getPosterTitleView()
-                getSubDetailsView()
-                getSynopsisView()
-                getMetricsView()
-                getCreditsView()
-            }
+         NavigationView {
+             ZStack {
+                 VStack {
+                     getPosterTitleView()
+                     getSubDetailsView()
+                     getSynopsisView()
+                     getMetricsView()
+                     getCreditsView()
+                 }
+                 if viewModel.isLoading {
+                     ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
+                 }
+             }
         }.navigationTitle(viewModel.pageTitle).onAppear {
             viewModel.onAppear()
         }.alert(isPresented: $viewModel.alert.isShowing) {

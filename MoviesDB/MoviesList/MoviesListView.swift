@@ -16,20 +16,25 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                 let screenSize = UIScreen.main.bounds
                 let cellSize = CGSize(width: screenSize.width / 3.0 - 2.0, height: screenSize.height / 3.0)
                 let gridItem = GridItem(.fixed(cellSize.width), spacing: 0.0)
-                ScrollView {
-                    LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders]) {
-                        Section(header: Text("Results").frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)) {
-                            ForEach(viewModel.moviesToDisplay.indices, id: \.self) { index in
-                                let movie = viewModel.moviesToDisplay[index]
-                                if let imdbID = movie.imdbID {
-                                    NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(imdbID: imdbID))) {
+                ZStack {
+                    ScrollView {
+                        LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: nil, pinnedViews: [.sectionHeaders]) {
+                            Section(header: Text("Results").frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)) {
+                                ForEach(viewModel.moviesToDisplay.indices, id: \.self) { index in
+                                    let movie = viewModel.moviesToDisplay[index]
+                                    if let imdbID = movie.imdbID {
+                                        NavigationLink(destination: MovieDetailsView(viewModel: MovieDetailsViewModel(imdbID: imdbID))) {
+                                            MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
+                                        }
+                                    } else {
                                         MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
                                     }
-                                } else {
-                                    MovieGridCellView(movie: viewModel.moviesToDisplay[index], size: cellSize)
                                 }
                             }
                         }
+                    }
+                    if viewModel.isLoading {
+                        ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
                     }
                 }
                 

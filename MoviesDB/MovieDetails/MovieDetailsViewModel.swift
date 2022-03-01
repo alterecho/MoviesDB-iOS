@@ -22,7 +22,7 @@ protocol MovieDetailsViewModelProtocol: ObservableObject {
     
     var poster: UIImage? { get }
     var alert: AlertModel { get set }
-    
+    var isLoading: Bool { get }
     func onAppear()
 }
 
@@ -43,6 +43,7 @@ class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
     
     @Published private(set) var details: MovieDetails?
     @Published private(set) var poster: UIImage?
+    @Published private(set) var isLoading = false
     
     private let service = MovieDetailsViewService()
     
@@ -51,7 +52,9 @@ class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
     }
     
     func onAppear() {
+        isLoading = true
         service.fetchMovieDetails(id: imdbID) { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .success(let details):
                 self?.details = details

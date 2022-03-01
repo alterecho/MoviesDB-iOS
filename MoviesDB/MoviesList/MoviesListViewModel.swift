@@ -14,6 +14,7 @@ protocol MoviesListViewModelProtocol: ObservableObject {
     var searchText: String { get set }
     var moviesToDisplay: [Movie] { get set }
     var alert: AlertModel { get set }
+    var isLoading: Bool { get }
 }
 
 class MoviesListViewModel: MoviesListViewModelProtocol {
@@ -23,6 +24,7 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
     @Published var searchText: String
     @Published var moviesToDisplay: [Movie]
     @Published var alert = AlertModel()
+    @Published var isLoading = false
     
     private let service = MoviesListViewService()
     private var cancellables = Set<AnyCancellable>()
@@ -39,7 +41,9 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
     }
     
     private func performSearch(searchString: String) {
+        isLoading = true
         service.search("marvel") { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .success(let movies):
                 self?.moviesToDisplay = movies
