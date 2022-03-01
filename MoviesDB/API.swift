@@ -23,7 +23,7 @@ struct API {
     }
     
     static func fetchMoviesDetails(id: String) -> URL {
-        guard let url = URL(string: "\(baseURL)/?apikey=\(apiKey)&i=\(id))") else {
+        guard let url = URL(string: "\(baseURL)/?apikey=\(apiKey)&i=\(id)") else {
             fatalError("invalid MoviesURL")
         }
         return url
