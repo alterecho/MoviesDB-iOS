@@ -15,12 +15,12 @@ class AlertModel: ObservableObject {
     @Published var buttonTitle: String?
     @Published var action: (() -> Void)?
     
-    init(error: Error? = nil, action: (() -> Void)? = nil) {
+    init(isShowing: Bool = false, error: Error? = nil, action: (() -> Void)? = nil) {
         if let error = error {
             self.title = "Error"
             self.message = error.localizedDescription
         }
-        self.isShowing = true
+        self.isShowing = isShowing
         self.buttonTitle = "dismiss"
         self.action = action
     }
