@@ -20,6 +20,7 @@ class Movie: ObservableObject {
     
     let posterURL: URL?
     
+    @Published var isLoading = false
     @Published var posterImage: UIImage?
     
     init(response: MovieResponse) {
@@ -37,14 +38,15 @@ class Movie: ObservableObject {
             return
         }
         
-        Utilities.shared.downloadImage(url: posterURL) { result in
-            Utilities.shared.downloadImage(url: posterURL) { [weak self] result in
-                switch result {
-                case .success(let image):
-                    self?.posterImage = image
-                case .failure(_):
-                    break
-                }
+        isLoading = true
+        
+        Utilities.shared.downloadImage(url: posterURL) { [weak self] result in
+            self?.isLoading = false
+            switch result {
+            case .success(let image):
+                self?.posterImage = image
+            case .failure(_):
+                break
             }
         }
     }

@@ -12,10 +12,12 @@ struct MovieGridCellView: View {
     let size: CGSize
     
     var body: some View {
-        if let posterImage = movie.posterImage {
+        if movie.isLoading {
+            ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else if let posterImage = movie.posterImage {
             Image(uiImage: posterImage).resizable().frame(width: size.width, height: size.height, alignment: .center).scaledToFit()
         } else {
-            ProgressView().background(Color.red)
+            Image(Images.errorIcon).resizable().scaledToFit().frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
