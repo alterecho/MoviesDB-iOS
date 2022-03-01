@@ -32,6 +32,7 @@
 		55E64C6327CCDF11004D59C6 /* MovieDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6227CCDF11004D59C6 /* MovieDetailsResponse.swift */; };
 		55E64C6527CCF691004D59C6 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6427CCF691004D59C6 /* MovieDetails.swift */; };
 		55E64C6727CD41ED004D59C6 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6627CD41EC004D59C6 /* AlertModel.swift */; };
+		55E64C6927CDA9F1004D59C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E64C6827CDA9F1004D59C6 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		55E64C6227CCDF11004D59C6 /* MovieDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsResponse.swift; sourceTree = "<group>"; };
 		55E64C6427CCF691004D59C6 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		55E64C6627CD41EC004D59C6 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		55E64C6827CDA9F1004D59C6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				55E64C3627CA80F2004D59C6 /* API.swift */,
 				55E64C3F27CA87DC004D59C6 /* Protocols.swift */,
 				55E64C5827CC9EAE004D59C6 /* Utilities.swift */,
+				55E64C6827CDA9F1004D59C6 /* Constants.swift */,
 				55E64C4527CA8C54004D59C6 /* Model */,
 				55E64C6127CCD83B004D59C6 /* CommonViews */,
 				55E64C3C27CA8751004D59C6 /* MoviesList */,
@@ -364,6 +367,7 @@
 				55E64C6727CD41ED004D59C6 /* AlertModel.swift in Sources */,
 				55E64C3927CA8735004D59C6 /* MoviesListView.swift in Sources */,
 				55E64C5E27CCD822004D59C6 /* MovieDetailsViewModel.swift in Sources */,
+				55E64C6927CDA9F1004D59C6 /* Constants.swift in Sources */,
 				55E64C5027CBB3C6004D59C6 /* SearchResponse.swift in Sources */,
 				55E64C5C27CCD7F6004D59C6 /* MovieDetailsView.swift in Sources */,
 				55E64C6327CCDF11004D59C6 /* MovieDetailsResponse.swift in Sources */,
