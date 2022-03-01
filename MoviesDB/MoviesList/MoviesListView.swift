@@ -37,10 +37,8 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                         ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
                     }
                 }
-                
-            }
-            
-        }.navigationTitle(viewModel.pageTitle).alert(isPresented: $viewModel.alert.isShowing) {
+            }.navigationTitle(viewModel.pageTitle)
+        }.alert(isPresented: $viewModel.alert.isShowing) {
             Alert(title: Text(viewModel.alert.title ?? ""), message: Text(viewModel.alert.message ?? ""),
                   dismissButton: .default(Text(viewModel.alert.buttonTitle ?? "")) {
                 

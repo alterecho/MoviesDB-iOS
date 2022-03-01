@@ -47,7 +47,8 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
             switch result {
             case .success(let movies):
                 self?.moviesToDisplay = movies
-            case .failure(_):
+            case .failure(let error):
+                self?.alert = AlertModel(error: error)
                 break
             }
         }
