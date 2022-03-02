@@ -13,31 +13,30 @@ struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-         NavigationView {
-             ScrollView {
-                 ZStack {
-                     VStack(spacing: 20.0) {
-                         getPosterTitleView()
-                         getSubDetailsView()
-                         getSynopsisView()
-                         getMetricsView()
-                         getCreditsView()
-                     }
-                     if viewModel.isLoading {
-                         ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
-                     }
-                 }.padding()
-             }.navigationTitle(viewModel.pageTitle).onAppear {
-                 viewModel.onAppear()
-             }
-        } .alert(isPresented: $viewModel.alert.isShowing) {
+        ScrollView {
+            ZStack {
+                VStack(spacing: 20.0) {
+                    getPosterTitleView()
+                    getSubDetailsView()
+                    getSynopsisView()
+                    getMetricsView()
+                    getCreditsView()
+                }
+                if viewModel.isLoading {
+                    ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
+                }
+            }.padding()
+        }.navigationTitle(viewModel.pageTitle).onAppear {
+            viewModel.onAppear()
+        }
+        .alert(isPresented: $viewModel.alert.isShowing) {
             Alert(title: Text(viewModel.alert.title ?? ""), message: Text(viewModel.alert.message ?? ""),
                   dismissButton: .default(Text(viewModel.alert.buttonTitle ?? "")) {
                 
             })
         }
     }
- 
+    
     func getPosterTitleView() -> some View {
         ZStack(alignment: .bottom) {
             let screenSize = UIScreen.main.bounds.size
