@@ -40,7 +40,7 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                     }
                 }.padding()
                 if viewModel.isLoading {
-                    ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
+                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint:.green)).frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.5))
                 }
             }
         }.navigationTitle(viewModel.pageTitle).alert(isPresented: $viewModel.alert.isShowing) {

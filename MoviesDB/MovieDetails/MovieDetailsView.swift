@@ -23,7 +23,7 @@ struct MovieDetailsView<ViewModel: MovieDetailsViewModelProtocol>: View {
                     getCreditsView()
                 }
                 if viewModel.isLoading {
-                    ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
+                    ProgressView().progressViewStyle(CircularProgressViewStyle(tint:.green)).frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.5))
                 }
             }.padding()
         }.navigationTitle(viewModel.pageTitle).onAppear {
