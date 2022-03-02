@@ -1,11 +1,10 @@
 # MoviesDB-iOS
 
-**Search page (Work in progress)**
+**Search page**
 
-![list-page](https://user-images.githubusercontent.com/6606141/156216344-75a1f1f8-536f-4854-80f6-02711a3c668f.png)
+![search-page](https://user-images.githubusercontent.com/6606141/156353545-3c1849cf-53c6-48ad-8127-ce25e850a814.png)
 
-**Details page (Work in progress)**
+**Details page**
 
-![details-page](https://user-images.githubusercontent.com/6606141/156216332-7516f3f7-fbd8-4a6e-8db5-2e04ac69665c.png)
-
-
+![details-page-1](https://user-images.githubusercontent.com/6606141/156353512-0ba7ec37-3690-45dd-a604-d11f37ad03e3.png)
+![details-page-2](https://user-images.githubusercontent.com/6606141/156353517-6c9b6d74-ab55-43b3-958a-95796ef63703.png)
