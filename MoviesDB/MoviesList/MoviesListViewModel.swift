@@ -40,6 +40,7 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
     private var totalResults: Int?
     private var currentPage = MoviesListViewModel.pageStartIndex
     private var currentSearchString: String?
+    private var displayedSearchString: String?
     private var currentPageToFetch: Int?
 
     init() {
@@ -53,12 +54,11 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
     }
     
     private func performSearch(searchString: String, page: Int) {
-        if searchString == currentSearchString &&  page == currentPageToFetch {
+        if searchString == currentSearchString && page == currentPageToFetch {
             return
         } else if searchString != currentSearchString {
             currentSearchString = searchString
         }
-        
         
         currentPageToFetch = page
         
@@ -73,16 +73,13 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
                 self?.currentPage += 1
                 self?.currentPageToFetch = nil
                 self?.totalResults = Int(response.totalResults ?? "")
-                if searchString.isEmpty {
-                    self?.searchHeader = ""
-                } else {
-                    self?.searchHeader = "Sesults for \(searchString)"
-                }
-                
-                if searchString == self?.currentSearchString {
+
+                if searchString == self?.displayedSearchString {
                     self?.moviesToDisplay.append(contentsOf: movies)
                 } else {
                     self?.moviesToDisplay = movies
+                    self?.displayedSearchString = searchString
+                    self?.searchHeader = "Sesults for \(searchString)"
                 }
 
             case .failure(let error):
