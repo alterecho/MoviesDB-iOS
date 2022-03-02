@@ -76,7 +76,7 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
                 if searchString.isEmpty {
                     self?.searchHeader = ""
                 } else {
-                    self?.searchHeader = "Results for \(searchString)"
+                    self?.searchHeader = "Sesults for \(searchString)"
                 }
                 
                 if searchString == self?.currentSearchString {
@@ -93,14 +93,16 @@ class MoviesListViewModel: MoviesListViewModelProtocol {
     }
     
     func movieCellDidAppear(index: Int) {
-        guard let totalResults = totalResults else {
-            return
+        if shouldFetchNextPage(cellIndex: index) {
+            loadNextPage()
         }
-
-        if index == (totalResults - 2) {
-            return
+    }
+    
+    func shouldFetchNextPage(cellIndex: Int) -> Bool {
+        if cellIndex == (moviesToDisplay.count - 2) && moviesToDisplay.count < totalResults ?? 0 {
+            return true
         }
-        loadNextPage()
+        return false
     }
     
     private func loadNextPage() {
