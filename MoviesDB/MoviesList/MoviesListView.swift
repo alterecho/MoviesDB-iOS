@@ -11,8 +11,8 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
     @StateObject var viewModel: ViewModel
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading, spacing: 2.0) {
-                TextField(viewModel.searchBarPlaceholder, text: $viewModel.searchText).padding()
+            VStack(alignment: .center, spacing: 5.0) {
+                TextField(viewModel.searchBarPlaceholder, text: $viewModel.searchText).frame(maxWidth: .infinity, alignment: .center).padding().background(Color.gray.opacity(0.25)).padding()
                 let screenSize = UIScreen.main.bounds
                 let numberOfItemsPerRow = 3
                 let spacing = 5.0
@@ -21,8 +21,8 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                 let gridItem = GridItem(.fixed(cellSize.width), spacing: spacing)
                 ZStack {
                     ScrollView {
-                        LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, spacing: spacing, pinnedViews: [.sectionHeaders]) {
-                            Section(header: Text("Results").frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.white)) {
+                        LazyVGrid(columns: [gridItem, gridItem, gridItem], alignment: .center, pinnedViews: [.sectionHeaders]) {
+                            Section(header: Text(viewModel.searchHeader).font(.headline).frame(maxWidth: .infinity).background(Color.white)) {
                                 ForEach(viewModel.moviesToDisplay.indices, id: \.self) { index in
                                     let movie = viewModel.moviesToDisplay[index]
                                     if let imdbID = movie.imdbID {
@@ -39,7 +39,7 @@ struct MoviesListView<ViewModel: MoviesListViewModelProtocol>: View {
                                 }
                             }
                         }
-                    }
+                    }.padding()
                     if viewModel.isLoading {
                         ProgressView().frame(maxWidth: .infinity, maxHeight: .infinity).background(Color.black.opacity(0.25))
                     }
