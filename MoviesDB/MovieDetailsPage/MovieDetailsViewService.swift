@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class MovieDetailsViewService {
+class MovieDetailsViewService: MovieDetailsViewServiceProtocol {
     private var movieDetailsCancellable: AnyCancellable?
     func fetchMovieDetails(id: String, completionHandler: @escaping (Result<MovieDetails, Error>) -> Void) {
         var movieDetails: MovieDetails?

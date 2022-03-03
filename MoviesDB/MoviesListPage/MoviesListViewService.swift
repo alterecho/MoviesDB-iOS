@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class MoviesListViewService {
+class MoviesListViewService: MoviesListViewServiceProtocol {
     var searchCancellable: AnyCancellable?
     
     func search(_ searchString: String, page: Int, completionHandler: @escaping (Result<SearchResponse, Error>) -> Void) {

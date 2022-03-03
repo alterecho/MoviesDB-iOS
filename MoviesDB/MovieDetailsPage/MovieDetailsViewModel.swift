@@ -8,25 +8,7 @@
 import Foundation
 import UIKit
 
-protocol MovieDetailsViewModelProtocol: ObservableObject {
-    var pageTitle: String { get }
-    var synopsisTitle: String { get }
-    var scoreTitle: String { get }
-    var reviewTitle: String { get }
-    var popularityTitle: String { get }
-    var directorTitle: String { get }
-    var writerTitle: String { get }
-    var actorsTitle: String { get }    
-    
-    var details: MovieDetails? { get }
-    
-    var poster: UIImage? { get }
-    var alert: AlertModel { get set }
-    var isLoading: Bool { get }
-    func onAppear()
-}
-
-class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
+class MovieDetailsViewModel: MovieDetailsViewModelProtocol {    
     var pageTitle = "Details page"
     
     let imdbID: String
@@ -45,7 +27,7 @@ class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
     @Published private(set) var poster: UIImage?
     @Published private(set) var isLoading = false
     
-    private let service = MovieDetailsViewService()
+    var service: MovieDetailsViewServiceProtocol = MovieDetailsViewService()
     
     init(imdbID: String) {
         self.imdbID = imdbID

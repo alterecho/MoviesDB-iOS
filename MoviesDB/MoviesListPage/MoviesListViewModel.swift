@@ -8,33 +8,19 @@
 import SwiftUI
 import Combine
 
-protocol MoviesListViewModelProtocol: ObservableObject {
-    var pageTitle: String { get }
-    var searchBarPlaceholder: String { get }
-    var searchText: String { get set }
-    var moviesToDisplay: [Movie] { get set }
-    var alert: AlertModel { get set }
-    var isLoading: Bool { get }
-    var searchHeader: String { get }
-    
-    func movieCellDidAppear(index: Int)
-}
-
 class MoviesListViewModel: MoviesListViewModelProtocol {
-    
-    private static let pageStartIndex = 1
-    
-    var searchBarPlaceholder: String
-    
     @Published var searchText: String
     @Published var moviesToDisplay: [Movie]
     @Published var alert = AlertModel()
     @Published var isLoading = false
     @Published var pageTitle = "Film list"
-    var searchHeader = ""
-
     
-    private let service = MoviesListViewService()
+    var searchHeader = ""
+    var service: MoviesListViewServiceProtocol = MoviesListViewService()
+    var searchBarPlaceholder: String
+
+    private static let pageStartIndex = 1
+    
     private var cancellables = Set<AnyCancellable>()
     
     private var totalResults: Int?
